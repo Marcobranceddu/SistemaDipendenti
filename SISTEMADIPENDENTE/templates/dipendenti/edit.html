@@ -1,0 +1,59 @@
+{% include 'header.html' %}
+
+Modulo Da Modificare
+
+{% for dipendente in dipendenti  %}
+
+
+<form method="post" action="/update" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            Modifica Dipendente
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dati Del Dipendente</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtNome">Nome:</label>
+                    <input id="txtNome" value="{{dipendente[1] }}" class="form-control" type="text" name="txtNome">
+                </div>
+                <div class="form-group">
+                    <label for="txtCognome">Cognome:</label>
+                    <input id="txtCognome" value="{{dipendente[2] }}" class="form-control" type="text" name="txtCognome">
+                </div>
+                <div class="form-group">
+                    <label for="txtMail">Mail:</label>
+                    <input id="txtMail" value="{{dipendente[3] }}" class="form-control" type="text" name="txtMail">
+                </div>
+                <div class="form-group">
+                    <label for="txtDipartimento">Dipartimento:</label>
+                    <input id="txtDipartimento" value="{{dipendente[4] }}" class="form-control" type="text" name="txtDipartimento">
+                </div>
+                <div class="form-group">
+                    <label for="txtFoto">Foto:</label>
+                    <img class="img-thumbnail" width="50" src="{{url_for('uploads', nomeFoto=dipendente[4])}}" alt=""></img>
+                    <input id="txtFoto" value="{{dipendente[5] }}" class="form-control" type="file" name="txtFoto">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Aggiornare">
+                    <a href="{{url_for('index')}}" class="btn btn-primary">Ritornare</a>
+                </div>
+
+                ID
+                <input type="hidden" value="{{dipendente[0] }}" name="txtID" id="txtID">
+
+            </p>
+        </div>
+    </div>
+
+    
+
+
+</form>
+
+    
+{% endfor %}
+
+{% include 'footer.html' %}

@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+<br/>
+<a href="{{url_for('create')}}" class="btn btn-success"> Inserisici Nuovo Dipendente</a>
+<br>
+<br>
+
+
+    <table class = "table table_light">
+        <thead class = "thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Mail</th>
+                <th>Dipartimento</th>
+                <th>Modificare | Rimuovere</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dipendente in dipendenti %}
+            <tr>
+                <td>{{dipendente[0] }}</td>
+                <td>{{dipendente[5] }}
+                    <img class="img-thumbnail" width="50" src="uploads/{{dipendente[5] }}" alt="">
+                    
+                </td>
+
+                <td>{{dipendente[1] }}</td>
+                <td>{{dipendente[2] }}</td>
+                <td>{{dipendente[3] }}</td>
+                <td>{{dipendente[4] }}</td>
+                <td><a class="btn btn-warning" href = "/edit/{{dipendente[0] }}">Modificare</a> |
+                    <a onclick= "return confirm('Vuoi eliminare il record?')" class="btn btn-danger" href = "/destroy/{{dipendente[0] }}">Rimouvere</a>
+                </td>
+            </tr>
+                
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+    
+{% include 'footer.html' %}
+
+    
+
